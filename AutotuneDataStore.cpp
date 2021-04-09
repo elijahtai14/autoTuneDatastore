@@ -92,6 +92,7 @@ bool AutotuneDataStore::append(double temp, double time)
 
     // Insert the new value
     tempList.push_back(tn);
+    return true;
 }
 
 // Finds the nearest point to temp and returns its time
@@ -153,11 +154,13 @@ bool AutotuneDataStore::isTooSmall (const TemperatureNode& tn)
 
 void AutotuneDataStore::filter() 
 {
+
     std::list<TemperatureNode>::iterator new_end = std::remove_if(tempList.begin(), tempList.end(),
         [](const TemperatureNode& tn)
         { 
             return (tn.temp < maxTemp * 0.50); 
         });
+
 
     tempList.erase(new_end, tempList.end());
 }
