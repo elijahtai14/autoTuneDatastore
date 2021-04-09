@@ -5,18 +5,16 @@
 
 class AutotuneDataStore 
 {
-
-    // I like my own linkedList rather than std::list because we only need limited functionality
-    struct TemperatureNode 
-    {
-        double temp;
-        double time;
-    };
-
-    std::list<TemperatureNode> tempList;
-
-    public:
+   public:  
         AutotuneDataStore(unsigned maxLength);
+
+        struct TemperatureNode 
+        {
+            double temp;
+            double time;
+        };
+
+        std::list<TemperatureNode> tempList; 
 
         unsigned length();
         unsigned getMaxLength(); 
@@ -29,9 +27,7 @@ class AutotuneDataStore
         unsigned maxLength;
         double maxTemp;
 
-        // Filters out values using the predicate isTooSmall 
-        void filter(); bool isTooSmall (const TemperatureNode& tn);
-
+        void filter();
 };
 
 #endif

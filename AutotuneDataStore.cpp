@@ -146,21 +146,15 @@ double AutotuneDataStore::getTempFromTime(double time)
     return temp;
 }
 
-// TooSmall is defined as being less than 0.63 of the max temperature
-bool AutotuneDataStore::isTooSmall (const TemperatureNode& tn) 
-{
-    return (tn.temp < maxTemp * 0.50);
-}
 
 void AutotuneDataStore::filter() 
-{
-
-    std::list<TemperatureNode>::iterator new_end = std::remove_if(tempList.begin(), tempList.end(),
-        [](const TemperatureNode& tn)
-        { 
-            return (tn.temp < maxTemp * 0.50); 
-        });
-
-
-    tempList.erase(new_end, tempList.end());
+{   
+    std::list<TemperatureNode>::iterator it;
+    for (it = tempList.begin(); it != tempList.end(); it++)
+    {
+        if (it -> temp < maxTemp * 0.50)
+        {
+            tempList.erase(it);
+        }
+    }
 }
