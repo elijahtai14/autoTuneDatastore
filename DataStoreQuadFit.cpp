@@ -2,7 +2,7 @@
 #include <cmath> 
 #include <iostream>
 
-#define DEBUG
+// #define DEBUG
 
 #ifdef DEBUG
 #define DEBUG_MSG(str) do { std::cout << str << std::endl; } while( false )
