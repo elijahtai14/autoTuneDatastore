@@ -52,7 +52,6 @@ class QuadFit {
         void computeC();
         void computeR2();
         
-
 };
 
 #endif
